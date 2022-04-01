@@ -1,17 +1,19 @@
 {
-  "name": "@electron/hasher",
+  "name": "",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "private": true,
+  "description": "",
   "scripts": {
-    "deploy": "aws2 lambda update-function-code --function-name hasher --zip-file fileb://function.zip --region us-east-1",
-    "package": "rm -f function.zip && zip -r function.zip index.js node_modules"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
   },
   "dependencies": {
     "got": "^11.8.2"
   },
   "devDependencies": {
-    "prettier": "^2.3.0"
+    "@azure/functions": "^3.0.0",
+    "typescript": "^4.0.0"
   }
 }

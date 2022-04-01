@@ -1,6 +1,6 @@
 # @electron/hasher
 
-> Ultra fast SHA generation for S3 files
+> Ultra fast SHA generation for Azure files
 
 ## What is this?
 
@@ -11,13 +11,13 @@ incredibly bottlenecked by your local I/O and network bandwidth.
 
 Our release was typically delayed by >20 minutes just downloading and hashing
 files. To make this part of the release quicker this lambda is used to calculate
-the SHA of an arbitrary remote file.  In our case it's always an S3 link which
-means that Lambda can compute that SHA insanely quickly as it effectively has a
-direct connection to S3.
+the SHA of an arbitrary remote file.  In our case it's always an Azure Blob Storage
+link which means that Azure Functions can compute that SHA insanely quickly as it effectively
+has a direct connection to Blob Storage.
 
 ## Benchmarks
 
-| | Locally with 1Gbs | Remote with Lambda |
+| | Locally with 1Gbs | Remote with Azure Functions |
 |-|-------------------|--------------------|
 | Single 7MB file | 3 seconds | 1.1 seconds |
 | 20 x 7MB files | 41 seconds | 1.2 seconds |
@@ -25,6 +25,5 @@ direct connection to S3.
 
 ## Usage
 
-This module is deployed as an AWS Lambda to Electron's AWS account. Calling
-it requires an AWS role with `Invoke` permissions on this function.
-
+This module is deployed as an Azure Function to Electron's Azure account. Calling
+it requires a function key.
